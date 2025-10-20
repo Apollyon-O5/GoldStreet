@@ -1,0 +1,43 @@
+﻿@model GoldStreet.ClienteMesa
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ClienteMesa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cuentas.CuentaID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cuentas.CuentaID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mesas.MesaID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mesas.MesaID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reservacion.ReservacionID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reservacion.ReservacionID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ClienteMesaID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,35 @@
+﻿@model GoldStreet.HistorialEstadoMesa
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HistorialEstadoMesa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ClienteMesa.ClienteMesaID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClienteMesa.ClienteMesaID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstadoMesa.NombreEstado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstadoMesa.NombreEstado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.HistorialEstadoMesaID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

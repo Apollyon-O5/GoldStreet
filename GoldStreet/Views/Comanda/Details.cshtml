@@ -1,0 +1,51 @@
+﻿@model GoldStreet.Comanda
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Comanda</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cuentas.CuentaID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cuentas.CuentaID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empleados.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empleados.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Menu.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Menu.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ComandaID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

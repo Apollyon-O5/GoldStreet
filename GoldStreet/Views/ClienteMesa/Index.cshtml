@@ -1,0 +1,46 @@
+﻿@model IEnumerable<GoldStreet.ClienteMesa>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cuentas.CuentaID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mesas.MesaID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reservacion.ReservacionID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cuentas.CuentaID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mesas.MesaID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reservacion.ReservacionID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ClienteMesaID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ClienteMesaID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ClienteMesaID })
+        </td>
+    </tr>
+}
+
+</table>

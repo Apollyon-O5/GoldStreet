@@ -10,17 +10,17 @@ using GoldStreet;
 
 namespace GoldStreet.Controllers
 {
-    public class EmpleadoController : Controller
+    public class EmpleadosController : Controller
     {
         private GoldStreetEntities db = new GoldStreetEntities();
 
-        // GET: Empleado
+        // GET: Empleados
         public ActionResult Index()
         {
             return View(db.Empleados.ToList());
         }
 
-        // GET: Empleado/Details/5
+        // GET: Empleados/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,13 +35,13 @@ namespace GoldStreet.Controllers
             return View(empleados);
         }
 
-        // GET: Empleado/Create
+        // GET: Empleados/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Empleado/Create
+        // POST: Empleados/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -58,7 +58,7 @@ namespace GoldStreet.Controllers
             return View(empleados);
         }
 
-        // GET: Empleado/Edit/5
+        // GET: Empleados/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,7 +73,7 @@ namespace GoldStreet.Controllers
             return View(empleados);
         }
 
-        // POST: Empleado/Edit/5
+        // POST: Empleados/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -89,7 +89,7 @@ namespace GoldStreet.Controllers
             return View(empleados);
         }
 
-        // GET: Empleado/Delete/5
+        // GET: Empleados/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,7 +104,7 @@ namespace GoldStreet.Controllers
             return View(empleados);
         }
 
-        // POST: Empleado/Delete/5
+        // POST: Empleados/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
