@@ -1,0 +1,872 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GoldStreetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categorias">
+          <Key>
+            <PropertyRef Name="CategoriaID" />
+          </Key>
+          <Property Name="CategoriaID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCategoria" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClienteMesa">
+          <Key>
+            <PropertyRef Name="ClienteMesaID" />
+          </Key>
+          <Property Name="ClienteMesaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MesaID" Type="smallint" Nullable="false" />
+          <Property Name="CuentaID" Type="int" Nullable="false" />
+          <Property Name="ReservacionID" Type="int" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="ClienteID" />
+          </Key>
+          <Property Name="ClienteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="30" />
+          <Property Name="Email" Type="varchar" MaxLength="30" />
+          <Property Name="Contrasenia" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Comanda">
+          <Key>
+            <PropertyRef Name="ComandaID" />
+          </Key>
+          <Property Name="ComandaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CuentaID" Type="int" Nullable="false" />
+          <Property Name="MenuID" Type="smallint" Nullable="false" />
+          <Property Name="EmpleadoID" Type="int" Nullable="false" />
+          <Property Name="Cantidad" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cuentas">
+          <Key>
+            <PropertyRef Name="CuentaID" />
+          </Key>
+          <Property Name="CuentaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClienteID" Type="int" Nullable="false" />
+          <Property Name="FechaApertura" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="Empleados">
+          <Key>
+            <PropertyRef Name="EmpleadoID" />
+          </Key>
+          <Property Name="EmpleadoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="30" />
+          <Property Name="Email" Type="varchar" MaxLength="40" />
+          <Property Name="Direccion" Type="varchar" MaxLength="50" />
+          <Property Name="FechaContratacion" Type="smalldatetime" />
+          <Property Name="Contrasenia" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="EstadoMesa">
+          <Key>
+            <PropertyRef Name="EstadoMesaID" />
+          </Key>
+          <Property Name="EstadoMesaID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreEstado" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HistorialEstadoMesa">
+          <Key>
+            <PropertyRef Name="HistorialEstadoMesaID" />
+          </Key>
+          <Property Name="HistorialEstadoMesaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClienteMesaID" Type="int" Nullable="false" />
+          <Property Name="EstadoMesaID" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoriaID" Type="tinyint" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Precio" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Mesas">
+          <Key>
+            <PropertyRef Name="MesaID" />
+          </Key>
+          <Property Name="MesaID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Capacidad" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reservacion">
+          <Key>
+            <PropertyRef Name="ReservacionID" />
+          </Key>
+          <Property Name="ReservacionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClienteID" Type="int" Nullable="false" />
+          <Property Name="FechaReservada" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Servicios">
+          <Key>
+            <PropertyRef Name="ServicioID" />
+          </Key>
+          <Property Name="ServicioID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreServicio" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transacciones">
+          <Key>
+            <PropertyRef Name="TransaccionID" />
+          </Key>
+          <Property Name="TransaccionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CuentaID" Type="int" Nullable="false" />
+          <Property Name="ServicioID" Type="tinyint" Nullable="false" />
+          <Property Name="Fecha" Type="smalldatetime" />
+          <Property Name="Total" Type="decimal" Precision="7" Scale="2" />
+        </EntityType>
+        <Association Name="FK__ClienteMe__Cuent__33D4B598">
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
+          <End Role="ClienteMesa" Type="Self.ClienteMesa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuentas">
+              <PropertyRef Name="CuentaID" />
+            </Principal>
+            <Dependent Role="ClienteMesa">
+              <PropertyRef Name="CuentaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ClienteMe__MesaI__32E0915F">
+          <End Role="Mesas" Type="Self.Mesas" Multiplicity="1" />
+          <End Role="ClienteMesa" Type="Self.ClienteMesa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mesas">
+              <PropertyRef Name="MesaID" />
+            </Principal>
+            <Dependent Role="ClienteMesa">
+              <PropertyRef Name="MesaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ClienteMe__Reser__34C8D9D1">
+          <End Role="Reservacion" Type="Self.Reservacion" Multiplicity="0..1" />
+          <End Role="ClienteMesa" Type="Self.ClienteMesa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservacion">
+              <PropertyRef Name="ReservacionID" />
+            </Principal>
+            <Dependent Role="ClienteMesa">
+              <PropertyRef Name="ReservacionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comanda__CuentaI__440B1D61">
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
+          <End Role="Comanda" Type="Self.Comanda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuentas">
+              <PropertyRef Name="CuentaID" />
+            </Principal>
+            <Dependent Role="Comanda">
+              <PropertyRef Name="CuentaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comanda__Emplead__45F365D3">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
+          <End Role="Comanda" Type="Self.Comanda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="EmpleadoID" />
+            </Principal>
+            <Dependent Role="Comanda">
+              <PropertyRef Name="EmpleadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comanda__MenuID__44FF419A">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
+          <End Role="Comanda" Type="Self.Comanda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="MenuID" />
+            </Principal>
+            <Dependent Role="Comanda">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cuentas__Cliente__2E1BDC42">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="Cuentas">
+              <PropertyRef Name="ClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Historial__Clien__48CFD27E">
+          <End Role="ClienteMesa" Type="Self.ClienteMesa" Multiplicity="1" />
+          <End Role="HistorialEstadoMesa" Type="Self.HistorialEstadoMesa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClienteMesa">
+              <PropertyRef Name="ClienteMesaID" />
+            </Principal>
+            <Dependent Role="HistorialEstadoMesa">
+              <PropertyRef Name="ClienteMesaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Historial__Estad__49C3F6B7">
+          <End Role="EstadoMesa" Type="Self.EstadoMesa" Multiplicity="1" />
+          <End Role="HistorialEstadoMesa" Type="Self.HistorialEstadoMesa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoMesa">
+              <PropertyRef Name="EstadoMesaID" />
+            </Principal>
+            <Dependent Role="HistorialEstadoMesa">
+              <PropertyRef Name="EstadoMesaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Menu__CategoriaI__3E52440B">
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
+          <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="CategoriaID" />
+            </Principal>
+            <Dependent Role="Menu">
+              <PropertyRef Name="CategoriaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservaci__Clien__2A4B4B5E">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Reservacion" Type="Self.Reservacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="Reservacion">
+              <PropertyRef Name="ClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacci__Cuent__38996AB5">
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
+          <End Role="Transacciones" Type="Self.Transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuentas">
+              <PropertyRef Name="CuentaID" />
+            </Principal>
+            <Dependent Role="Transacciones">
+              <PropertyRef Name="CuentaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacci__Servi__398D8EEE">
+          <End Role="Servicios" Type="Self.Servicios" Multiplicity="1" />
+          <End Role="Transacciones" Type="Self.Transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicios">
+              <PropertyRef Name="ServicioID" />
+            </Principal>
+            <Dependent Role="Transacciones">
+              <PropertyRef Name="ServicioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GoldStreetModelStoreContainer">
+          <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClienteMesa" EntityType="Self.ClienteMesa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comanda" EntityType="Self.Comanda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cuentas" EntityType="Self.Cuentas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadoMesa" EntityType="Self.EstadoMesa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HistorialEstadoMesa" EntityType="Self.HistorialEstadoMesa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mesas" EntityType="Self.Mesas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservacion" EntityType="Self.Reservacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Servicios" EntityType="Self.Servicios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transacciones" EntityType="Self.Transacciones" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ClienteMe__Cuent__33D4B598" Association="Self.FK__ClienteMe__Cuent__33D4B598">
+            <End Role="Cuentas" EntitySet="Cuentas" />
+            <End Role="ClienteMesa" EntitySet="ClienteMesa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ClienteMe__MesaI__32E0915F" Association="Self.FK__ClienteMe__MesaI__32E0915F">
+            <End Role="Mesas" EntitySet="Mesas" />
+            <End Role="ClienteMesa" EntitySet="ClienteMesa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ClienteMe__Reser__34C8D9D1" Association="Self.FK__ClienteMe__Reser__34C8D9D1">
+            <End Role="Reservacion" EntitySet="Reservacion" />
+            <End Role="ClienteMesa" EntitySet="ClienteMesa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comanda__CuentaI__440B1D61" Association="Self.FK__Comanda__CuentaI__440B1D61">
+            <End Role="Cuentas" EntitySet="Cuentas" />
+            <End Role="Comanda" EntitySet="Comanda" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comanda__Emplead__45F365D3" Association="Self.FK__Comanda__Emplead__45F365D3">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Comanda" EntitySet="Comanda" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comanda__MenuID__44FF419A" Association="Self.FK__Comanda__MenuID__44FF419A">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="Comanda" EntitySet="Comanda" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cuentas__Cliente__2E1BDC42" Association="Self.FK__Cuentas__Cliente__2E1BDC42">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Cuentas" EntitySet="Cuentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Historial__Clien__48CFD27E" Association="Self.FK__Historial__Clien__48CFD27E">
+            <End Role="ClienteMesa" EntitySet="ClienteMesa" />
+            <End Role="HistorialEstadoMesa" EntitySet="HistorialEstadoMesa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Historial__Estad__49C3F6B7" Association="Self.FK__Historial__Estad__49C3F6B7">
+            <End Role="EstadoMesa" EntitySet="EstadoMesa" />
+            <End Role="HistorialEstadoMesa" EntitySet="HistorialEstadoMesa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Menu__CategoriaI__3E52440B" Association="Self.FK__Menu__CategoriaI__3E52440B">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Menu" EntitySet="Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservaci__Clien__2A4B4B5E" Association="Self.FK__Reservaci__Clien__2A4B4B5E">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Reservacion" EntitySet="Reservacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacci__Cuent__38996AB5" Association="Self.FK__Transacci__Cuent__38996AB5">
+            <End Role="Cuentas" EntitySet="Cuentas" />
+            <End Role="Transacciones" EntitySet="Transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacci__Servi__398D8EEE" Association="Self.FK__Transacci__Servi__398D8EEE">
+            <End Role="Servicios" EntitySet="Servicios" />
+            <End Role="Transacciones" EntitySet="Transacciones" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GoldStreetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Categorias">
+          <Key>
+            <PropertyRef Name="CategoriaID" />
+          </Key>
+          <Property Name="CategoriaID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCategoria" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Menu" Relationship="Self.FK__Menu__CategoriaI__3E52440B" FromRole="Categorias" ToRole="Menu" />
+        </EntityType>
+        <EntityType Name="ClienteMesa">
+          <Key>
+            <PropertyRef Name="ClienteMesaID" />
+          </Key>
+          <Property Name="ClienteMesaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MesaID" Type="Int16" Nullable="false" />
+          <Property Name="CuentaID" Type="Int32" Nullable="false" />
+          <Property Name="ReservacionID" Type="Int32" />
+          <NavigationProperty Name="Cuentas" Relationship="Self.FK__ClienteMe__Cuent__33D4B598" FromRole="ClienteMesa" ToRole="Cuentas" />
+          <NavigationProperty Name="Mesas" Relationship="Self.FK__ClienteMe__MesaI__32E0915F" FromRole="ClienteMesa" ToRole="Mesas" />
+          <NavigationProperty Name="Reservacion" Relationship="Self.FK__ClienteMe__Reser__34C8D9D1" FromRole="ClienteMesa" ToRole="Reservacion" />
+          <NavigationProperty Name="HistorialEstadoMesa" Relationship="Self.FK__Historial__Clien__48CFD27E" FromRole="ClienteMesa" ToRole="HistorialEstadoMesa" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="ClienteID" />
+          </Key>
+          <Property Name="ClienteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Contrasenia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cuentas" Relationship="Self.FK__Cuentas__Cliente__2E1BDC42" FromRole="Clientes" ToRole="Cuentas" />
+          <NavigationProperty Name="Reservacion" Relationship="Self.FK__Reservaci__Clien__2A4B4B5E" FromRole="Clientes" ToRole="Reservacion" />
+        </EntityType>
+        <EntityType Name="Comanda">
+          <Key>
+            <PropertyRef Name="ComandaID" />
+          </Key>
+          <Property Name="ComandaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CuentaID" Type="Int32" Nullable="false" />
+          <Property Name="MenuID" Type="Int16" Nullable="false" />
+          <Property Name="EmpleadoID" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Cuentas" Relationship="Self.FK__Comanda__CuentaI__440B1D61" FromRole="Comanda" ToRole="Cuentas" />
+          <NavigationProperty Name="Empleados" Relationship="Self.FK__Comanda__Emplead__45F365D3" FromRole="Comanda" ToRole="Empleados" />
+          <NavigationProperty Name="Menu" Relationship="Self.FK__Comanda__MenuID__44FF419A" FromRole="Comanda" ToRole="Menu" />
+        </EntityType>
+        <EntityType Name="Cuentas">
+          <Key>
+            <PropertyRef Name="CuentaID" />
+          </Key>
+          <Property Name="CuentaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClienteID" Type="Int32" Nullable="false" />
+          <Property Name="FechaApertura" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="ClienteMesa" Relationship="Self.FK__ClienteMe__Cuent__33D4B598" FromRole="Cuentas" ToRole="ClienteMesa" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK__Cuentas__Cliente__2E1BDC42" FromRole="Cuentas" ToRole="Clientes" />
+          <NavigationProperty Name="Comanda" Relationship="Self.FK__Comanda__CuentaI__440B1D61" FromRole="Cuentas" ToRole="Comanda" />
+          <NavigationProperty Name="Transacciones" Relationship="Self.FK__Transacci__Cuent__38996AB5" FromRole="Cuentas" ToRole="Transacciones" />
+        </EntityType>
+        <EntityType Name="Empleados">
+          <Key>
+            <PropertyRef Name="EmpleadoID" />
+          </Key>
+          <Property Name="EmpleadoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaContratacion" Type="DateTime" Precision="0" />
+          <Property Name="Contrasenia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Comanda" Relationship="Self.FK__Comanda__Emplead__45F365D3" FromRole="Empleados" ToRole="Comanda" />
+        </EntityType>
+        <EntityType Name="EstadoMesa">
+          <Key>
+            <PropertyRef Name="EstadoMesaID" />
+          </Key>
+          <Property Name="EstadoMesaID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreEstado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="HistorialEstadoMesa" Relationship="Self.FK__Historial__Estad__49C3F6B7" FromRole="EstadoMesa" ToRole="HistorialEstadoMesa" />
+        </EntityType>
+        <EntityType Name="HistorialEstadoMesa">
+          <Key>
+            <PropertyRef Name="HistorialEstadoMesaID" />
+          </Key>
+          <Property Name="HistorialEstadoMesaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClienteMesaID" Type="Int32" Nullable="false" />
+          <Property Name="EstadoMesaID" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="ClienteMesa" Relationship="Self.FK__Historial__Clien__48CFD27E" FromRole="HistorialEstadoMesa" ToRole="ClienteMesa" />
+          <NavigationProperty Name="EstadoMesa" Relationship="Self.FK__Historial__Estad__49C3F6B7" FromRole="HistorialEstadoMesa" ToRole="EstadoMesa" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoriaID" Type="Byte" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Precio" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Categorias" Relationship="Self.FK__Menu__CategoriaI__3E52440B" FromRole="Menu" ToRole="Categorias" />
+          <NavigationProperty Name="Comanda" Relationship="Self.FK__Comanda__MenuID__44FF419A" FromRole="Menu" ToRole="Comanda" />
+        </EntityType>
+        <EntityType Name="Mesas">
+          <Key>
+            <PropertyRef Name="MesaID" />
+          </Key>
+          <Property Name="MesaID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Capacidad" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="ClienteMesa" Relationship="Self.FK__ClienteMe__MesaI__32E0915F" FromRole="Mesas" ToRole="ClienteMesa" />
+        </EntityType>
+        <EntityType Name="Reservacion">
+          <Key>
+            <PropertyRef Name="ReservacionID" />
+          </Key>
+          <Property Name="ReservacionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClienteID" Type="Int32" Nullable="false" />
+          <Property Name="FechaReservada" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="ClienteMesa" Relationship="Self.FK__ClienteMe__Reser__34C8D9D1" FromRole="Reservacion" ToRole="ClienteMesa" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK__Reservaci__Clien__2A4B4B5E" FromRole="Reservacion" ToRole="Clientes" />
+        </EntityType>
+        <EntityType Name="Servicios">
+          <Key>
+            <PropertyRef Name="ServicioID" />
+          </Key>
+          <Property Name="ServicioID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreServicio" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Transacciones" Relationship="Self.FK__Transacci__Servi__398D8EEE" FromRole="Servicios" ToRole="Transacciones" />
+        </EntityType>
+        <EntityType Name="Transacciones">
+          <Key>
+            <PropertyRef Name="TransaccionID" />
+          </Key>
+          <Property Name="TransaccionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CuentaID" Type="Int32" Nullable="false" />
+          <Property Name="ServicioID" Type="Byte" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <Property Name="Total" Type="Decimal" Precision="7" Scale="2" />
+          <NavigationProperty Name="Cuentas" Relationship="Self.FK__Transacci__Cuent__38996AB5" FromRole="Transacciones" ToRole="Cuentas" />
+          <NavigationProperty Name="Servicios" Relationship="Self.FK__Transacci__Servi__398D8EEE" FromRole="Transacciones" ToRole="Servicios" />
+        </EntityType>
+        <Association Name="FK__Menu__CategoriaI__3E52440B">
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
+          <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="CategoriaID" />
+            </Principal>
+            <Dependent Role="Menu">
+              <PropertyRef Name="CategoriaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ClienteMe__Cuent__33D4B598">
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
+          <End Role="ClienteMesa" Type="Self.ClienteMesa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuentas">
+              <PropertyRef Name="CuentaID" />
+            </Principal>
+            <Dependent Role="ClienteMesa">
+              <PropertyRef Name="CuentaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ClienteMe__MesaI__32E0915F">
+          <End Role="Mesas" Type="Self.Mesas" Multiplicity="1" />
+          <End Role="ClienteMesa" Type="Self.ClienteMesa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mesas">
+              <PropertyRef Name="MesaID" />
+            </Principal>
+            <Dependent Role="ClienteMesa">
+              <PropertyRef Name="MesaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ClienteMe__Reser__34C8D9D1">
+          <End Role="Reservacion" Type="Self.Reservacion" Multiplicity="0..1" />
+          <End Role="ClienteMesa" Type="Self.ClienteMesa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservacion">
+              <PropertyRef Name="ReservacionID" />
+            </Principal>
+            <Dependent Role="ClienteMesa">
+              <PropertyRef Name="ReservacionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Historial__Clien__48CFD27E">
+          <End Role="ClienteMesa" Type="Self.ClienteMesa" Multiplicity="1" />
+          <End Role="HistorialEstadoMesa" Type="Self.HistorialEstadoMesa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClienteMesa">
+              <PropertyRef Name="ClienteMesaID" />
+            </Principal>
+            <Dependent Role="HistorialEstadoMesa">
+              <PropertyRef Name="ClienteMesaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cuentas__Cliente__2E1BDC42">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="Cuentas">
+              <PropertyRef Name="ClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservaci__Clien__2A4B4B5E">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Reservacion" Type="Self.Reservacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="Reservacion">
+              <PropertyRef Name="ClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comanda__CuentaI__440B1D61">
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
+          <End Role="Comanda" Type="Self.Comanda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuentas">
+              <PropertyRef Name="CuentaID" />
+            </Principal>
+            <Dependent Role="Comanda">
+              <PropertyRef Name="CuentaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comanda__Emplead__45F365D3">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
+          <End Role="Comanda" Type="Self.Comanda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="EmpleadoID" />
+            </Principal>
+            <Dependent Role="Comanda">
+              <PropertyRef Name="EmpleadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comanda__MenuID__44FF419A">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
+          <End Role="Comanda" Type="Self.Comanda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="MenuID" />
+            </Principal>
+            <Dependent Role="Comanda">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacci__Cuent__38996AB5">
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
+          <End Role="Transacciones" Type="Self.Transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuentas">
+              <PropertyRef Name="CuentaID" />
+            </Principal>
+            <Dependent Role="Transacciones">
+              <PropertyRef Name="CuentaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Historial__Estad__49C3F6B7">
+          <End Role="EstadoMesa" Type="Self.EstadoMesa" Multiplicity="1" />
+          <End Role="HistorialEstadoMesa" Type="Self.HistorialEstadoMesa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoMesa">
+              <PropertyRef Name="EstadoMesaID" />
+            </Principal>
+            <Dependent Role="HistorialEstadoMesa">
+              <PropertyRef Name="EstadoMesaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacci__Servi__398D8EEE">
+          <End Role="Servicios" Type="Self.Servicios" Multiplicity="1" />
+          <End Role="Transacciones" Type="Self.Transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicios">
+              <PropertyRef Name="ServicioID" />
+            </Principal>
+            <Dependent Role="Transacciones">
+              <PropertyRef Name="ServicioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GoldStreetEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categorias" EntityType="Self.Categorias" />
+          <EntitySet Name="ClienteMesa" EntityType="Self.ClienteMesa" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" />
+          <EntitySet Name="Comanda" EntityType="Self.Comanda" />
+          <EntitySet Name="Cuentas" EntityType="Self.Cuentas" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleados" />
+          <EntitySet Name="EstadoMesa" EntityType="Self.EstadoMesa" />
+          <EntitySet Name="HistorialEstadoMesa" EntityType="Self.HistorialEstadoMesa" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" />
+          <EntitySet Name="Mesas" EntityType="Self.Mesas" />
+          <EntitySet Name="Reservacion" EntityType="Self.Reservacion" />
+          <EntitySet Name="Servicios" EntityType="Self.Servicios" />
+          <EntitySet Name="Transacciones" EntityType="Self.Transacciones" />
+          <AssociationSet Name="FK__Menu__CategoriaI__3E52440B" Association="Self.FK__Menu__CategoriaI__3E52440B">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Menu" EntitySet="Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ClienteMe__Cuent__33D4B598" Association="Self.FK__ClienteMe__Cuent__33D4B598">
+            <End Role="Cuentas" EntitySet="Cuentas" />
+            <End Role="ClienteMesa" EntitySet="ClienteMesa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ClienteMe__MesaI__32E0915F" Association="Self.FK__ClienteMe__MesaI__32E0915F">
+            <End Role="Mesas" EntitySet="Mesas" />
+            <End Role="ClienteMesa" EntitySet="ClienteMesa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ClienteMe__Reser__34C8D9D1" Association="Self.FK__ClienteMe__Reser__34C8D9D1">
+            <End Role="Reservacion" EntitySet="Reservacion" />
+            <End Role="ClienteMesa" EntitySet="ClienteMesa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Historial__Clien__48CFD27E" Association="Self.FK__Historial__Clien__48CFD27E">
+            <End Role="ClienteMesa" EntitySet="ClienteMesa" />
+            <End Role="HistorialEstadoMesa" EntitySet="HistorialEstadoMesa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cuentas__Cliente__2E1BDC42" Association="Self.FK__Cuentas__Cliente__2E1BDC42">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Cuentas" EntitySet="Cuentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservaci__Clien__2A4B4B5E" Association="Self.FK__Reservaci__Clien__2A4B4B5E">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Reservacion" EntitySet="Reservacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comanda__CuentaI__440B1D61" Association="Self.FK__Comanda__CuentaI__440B1D61">
+            <End Role="Cuentas" EntitySet="Cuentas" />
+            <End Role="Comanda" EntitySet="Comanda" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comanda__Emplead__45F365D3" Association="Self.FK__Comanda__Emplead__45F365D3">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Comanda" EntitySet="Comanda" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comanda__MenuID__44FF419A" Association="Self.FK__Comanda__MenuID__44FF419A">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="Comanda" EntitySet="Comanda" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacci__Cuent__38996AB5" Association="Self.FK__Transacci__Cuent__38996AB5">
+            <End Role="Cuentas" EntitySet="Cuentas" />
+            <End Role="Transacciones" EntitySet="Transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Historial__Estad__49C3F6B7" Association="Self.FK__Historial__Estad__49C3F6B7">
+            <End Role="EstadoMesa" EntitySet="EstadoMesa" />
+            <End Role="HistorialEstadoMesa" EntitySet="HistorialEstadoMesa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacci__Servi__398D8EEE" Association="Self.FK__Transacci__Servi__398D8EEE">
+            <End Role="Servicios" EntitySet="Servicios" />
+            <End Role="Transacciones" EntitySet="Transacciones" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GoldStreetModelStoreContainer" CdmEntityContainer="GoldStreetEntities">
+          <EntitySetMapping Name="Categorias">
+            <EntityTypeMapping TypeName="GoldStreetModel.Categorias">
+              <MappingFragment StoreEntitySet="Categorias">
+                <ScalarProperty Name="CategoriaID" ColumnName="CategoriaID" />
+                <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClienteMesa">
+            <EntityTypeMapping TypeName="GoldStreetModel.ClienteMesa">
+              <MappingFragment StoreEntitySet="ClienteMesa">
+                <ScalarProperty Name="ClienteMesaID" ColumnName="ClienteMesaID" />
+                <ScalarProperty Name="MesaID" ColumnName="MesaID" />
+                <ScalarProperty Name="CuentaID" ColumnName="CuentaID" />
+                <ScalarProperty Name="ReservacionID" ColumnName="ReservacionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="GoldStreetModel.Clientes">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Contrasenia" ColumnName="Contrasenia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comanda">
+            <EntityTypeMapping TypeName="GoldStreetModel.Comanda">
+              <MappingFragment StoreEntitySet="Comanda">
+                <ScalarProperty Name="ComandaID" ColumnName="ComandaID" />
+                <ScalarProperty Name="CuentaID" ColumnName="CuentaID" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="EmpleadoID" ColumnName="EmpleadoID" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cuentas">
+            <EntityTypeMapping TypeName="GoldStreetModel.Cuentas">
+              <MappingFragment StoreEntitySet="Cuentas">
+                <ScalarProperty Name="CuentaID" ColumnName="CuentaID" />
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="FechaApertura" ColumnName="FechaApertura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleados">
+            <EntityTypeMapping TypeName="GoldStreetModel.Empleados">
+              <MappingFragment StoreEntitySet="Empleados">
+                <ScalarProperty Name="EmpleadoID" ColumnName="EmpleadoID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="FechaContratacion" ColumnName="FechaContratacion" />
+                <ScalarProperty Name="Contrasenia" ColumnName="Contrasenia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadoMesa">
+            <EntityTypeMapping TypeName="GoldStreetModel.EstadoMesa">
+              <MappingFragment StoreEntitySet="EstadoMesa">
+                <ScalarProperty Name="EstadoMesaID" ColumnName="EstadoMesaID" />
+                <ScalarProperty Name="NombreEstado" ColumnName="NombreEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistorialEstadoMesa">
+            <EntityTypeMapping TypeName="GoldStreetModel.HistorialEstadoMesa">
+              <MappingFragment StoreEntitySet="HistorialEstadoMesa">
+                <ScalarProperty Name="HistorialEstadoMesaID" ColumnName="HistorialEstadoMesaID" />
+                <ScalarProperty Name="ClienteMesaID" ColumnName="ClienteMesaID" />
+                <ScalarProperty Name="EstadoMesaID" ColumnName="EstadoMesaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menu">
+            <EntityTypeMapping TypeName="GoldStreetModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="CategoriaID" ColumnName="CategoriaID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mesas">
+            <EntityTypeMapping TypeName="GoldStreetModel.Mesas">
+              <MappingFragment StoreEntitySet="Mesas">
+                <ScalarProperty Name="MesaID" ColumnName="MesaID" />
+                <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservacion">
+            <EntityTypeMapping TypeName="GoldStreetModel.Reservacion">
+              <MappingFragment StoreEntitySet="Reservacion">
+                <ScalarProperty Name="ReservacionID" ColumnName="ReservacionID" />
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="FechaReservada" ColumnName="FechaReservada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Servicios">
+            <EntityTypeMapping TypeName="GoldStreetModel.Servicios">
+              <MappingFragment StoreEntitySet="Servicios">
+                <ScalarProperty Name="ServicioID" ColumnName="ServicioID" />
+                <ScalarProperty Name="NombreServicio" ColumnName="NombreServicio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transacciones">
+            <EntityTypeMapping TypeName="GoldStreetModel.Transacciones">
+              <MappingFragment StoreEntitySet="Transacciones">
+                <ScalarProperty Name="TransaccionID" ColumnName="TransaccionID" />
+                <ScalarProperty Name="CuentaID" ColumnName="CuentaID" />
+                <ScalarProperty Name="ServicioID" ColumnName="ServicioID" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
