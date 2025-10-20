@@ -141,6 +141,7 @@
     <Compile Include="Comanda.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Cuentas.cs">
@@ -263,6 +264,11 @@
     <Content Include="Views\Menu\Details.cshtml" />
     <Content Include="Views\Menu\Edit.cshtml" />
     <Content Include="Views\Menu\Index.cshtml" />
+    <Content Include="Views\Empleado\Create.cshtml" />
+    <Content Include="Views\Empleado\Delete.cshtml" />
+    <Content Include="Views\Empleado\Details.cshtml" />
+    <Content Include="Views\Empleado\Edit.cshtml" />
+    <Content Include="Views\Empleado\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
