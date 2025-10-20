@@ -10,18 +10,18 @@ using GoldStreet;
 
 namespace GoldStreet.Controllers
 {
-    public class MenusController : Controller
+    public class MenuController : Controller
     {
         private GoldStreetEntities db = new GoldStreetEntities();
 
-        // GET: Menus
+        // GET: Menu
         public ActionResult Index()
         {
             var menu = db.Menu.Include(m => m.Categorias);
             return View(menu.ToList());
         }
 
-        // GET: Menus/Details/5
+        // GET: Menu/Details/5
         public ActionResult Details(short? id)
         {
             if (id == null)
@@ -36,14 +36,14 @@ namespace GoldStreet.Controllers
             return View(menu);
         }
 
-        // GET: Menus/Create
+        // GET: Menu/Create
         public ActionResult Create()
         {
             ViewBag.CategoriaID = new SelectList(db.Categorias, "CategoriaID", "NombreCategoria");
             return View();
         }
 
-        // POST: Menus/Create
+        // POST: Menu/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -61,7 +61,7 @@ namespace GoldStreet.Controllers
             return View(menu);
         }
 
-        // GET: Menus/Edit/5
+        // GET: Menu/Edit/5
         public ActionResult Edit(short? id)
         {
             if (id == null)
@@ -77,7 +77,7 @@ namespace GoldStreet.Controllers
             return View(menu);
         }
 
-        // POST: Menus/Edit/5
+        // POST: Menu/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -94,7 +94,7 @@ namespace GoldStreet.Controllers
             return View(menu);
         }
 
-        // GET: Menus/Delete/5
+        // GET: Menu/Delete/5
         public ActionResult Delete(short? id)
         {
             if (id == null)
@@ -109,7 +109,7 @@ namespace GoldStreet.Controllers
             return View(menu);
         }
 
-        // POST: Menus/Delete/5
+        // POST: Menu/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(short id)

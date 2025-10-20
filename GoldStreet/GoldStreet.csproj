@@ -142,7 +142,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MenusController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Cuentas.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -258,11 +258,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Menus\Create.cshtml" />
-    <Content Include="Views\Menus\Delete.cshtml" />
-    <Content Include="Views\Menus\Details.cshtml" />
-    <Content Include="Views\Menus\Edit.cshtml" />
-    <Content Include="Views\Menus\Index.cshtml" />
+    <Content Include="Views\Menu\Create.cshtml" />
+    <Content Include="Views\Menu\Delete.cshtml" />
+    <Content Include="Views\Menu\Details.cshtml" />
+    <Content Include="Views\Menu\Edit.cshtml" />
+    <Content Include="Views\Menu\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
