@@ -219,9 +219,14 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="CSS\Generales.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Imagenes\Carrusel\carne-de-vaca-carne-premium-madu.png" />
+    <Content Include="Imagenes\Carrusel\Mar-y-tierra-001-Larousse-Cocina.png" />
+    <Content Include="Imagenes\Carrusel\Mesera-1024x889.png" />
+    <Content Include="Imagenes\Logo.png" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

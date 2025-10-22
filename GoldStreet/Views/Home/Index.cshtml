@@ -2,32 +2,51 @@
     ViewBag.Title = "Home Page";
 }
 
-<main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-    </section>
+<!-- HERO CAROUSEL -->
+<div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
 
-    <div class="row">
-        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-            <h2 id="gettingStartedTitle">Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="librariesTitle">
-            <h2 id="librariesTitle">Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </section>
+        <!-- Slide 1 -->
+        <div class="carousel-item active" style="height: 80vh; background: url('@Url.Content("~/Imagenes/Carrusel/carne-de-vaca-carne-premium-madu.png")') center/cover no-repeat;">
+            <div class="carousel-caption d-flex flex-column justify-content-center align-items-center h-100 text-center">
+                <h1 class="display-4 fw-bold text-white text-shadow animate-slide">Deleita tu paladar<br>con nuestros mejores cortes</h1>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item" style="height: 80vh; background: url('@Url.Content("~/Imagenes/Carrusel/Mar-y-tierra-001-Larousse-Cocina.png")') center/cover no-repeat;">
+            <div class="carousel-caption d-flex flex-column justify-content-center align-items-center h-100 text-center">
+                <h1 class="display-4 fw-bold text-white text-shadow animate-slide">Un Restaurante Real<br>El Steak Perfecto, en el Lugar Perfecto</h1>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item" style="height: 80vh; background: url('@Url.Content("~/Imagenes/Carrusel/Mesera-1024x889.png")') center/cover no-repeat;">
+            <div class="carousel-caption d-flex flex-column justify-content-center align-items-center h-100 text-center">
+                <h1 class="display-4 fw-bold text-white text-shadow animate-slide">Ven, te esperamos</h1>
+                <p class="lead animate-slide mt-3">Disfruta de la mejor experiencia gastronómica en GoldStreet</p>
+                <a href="@Url.Action("Reservacion", "Home")" class="btn btn-warning btn-lg mt-3 animate-slide">Realiza tu reservación</a>
+            </div>
+        </div>
+
     </div>
-</main>
+
+    <!-- Controles -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+    </button>
+
+    <!-- Indicadores -->
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+</div>
+
+<!-- ESTILOS ADICIONALES -->

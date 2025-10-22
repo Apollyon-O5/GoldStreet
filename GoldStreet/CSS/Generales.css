@@ -1,0 +1,95 @@
+﻿.navbar {
+    background-color: rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-brand img {
+    height: 50px;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.nav-link {
+    color: #fff !important;
+    font-weight: 500;
+    margin: 0 1rem;
+    transition: color 0.3s ease;
+}
+
+    .nav-link:hover {
+        color: #E09900 !important;
+    }
+
+
+#Redes {
+
+display: flex;
+text-align:center;
+gap:30px;
+}
+
+
+
+/* Footer */
+footer {
+    background-color: #231F20;
+    color: #fff;
+    padding: 3rem 0;
+}
+
+    footer a {
+        color: #E09900;
+        text-decoration: none;
+    }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+.footer-icon {
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+}
+
+
+.carousel-caption h1,
+.carousel-caption p,
+.carousel-caption a {
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+}
+
+/* Animación suave */
+.animate-slide {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideUp 1s forwards;
+    animation-delay: 0.3s;
+}
+
+.carousel-item.active .animate-slide {
+    animation: slideUp 1s forwards;
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
