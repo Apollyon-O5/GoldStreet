@@ -1,19 +1,55 @@
 ﻿@{
-    ViewBag.Title = "Contact";
+    ViewBag.Title = "Contáctanos";
 }
-<main aria-labelledby="title">
-    <h2 id="title">@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
 
-    <address>
-        One Microsoft Way<br />
-        Redmond, WA 98052-6399<br />
-        <abbr title="Phone">P:</abbr>
-        425.555.0100
-    </address>
+<main class="container py-5">
+    <!-- Encabezado -->
+    <div class="text-center mb-5">
+        <h2 class="fw-bold text-uppercase mb-3">@ViewBag.Title</h2>
+        <p class="text-muted fs-5">Queremos escucharte. Contáctanos para realizar reservaciones, eventos o resolver tus dudas.</p>
+    </div>
 
-    <address>
-        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-    </address>
+    <div class="row justify-content-center g-4">
+        <!-- Información de contacto -->
+        <div class="col-md-5">
+            <div class="card border-0 shadow-sm p-4 h-100">
+                <h4 class="fw-semibold text-dark mb-3">
+                    <i class="bi bi-geo-alt text-warning me-2"></i>Ubicación
+                </h4>
+                <p class="text-muted mb-4">
+                    <strong>Restaurante Gold Street</strong><br />
+                    Km 9 1/2 de la Carretera de Oro. 2 km al oriente de Unicentro Altavista<br />
+                    
+                </p>
+
+                <h5 class="fw-semibold text-dark mb-2">
+                    <i class="bi bi-telephone text-warning me-2"></i>Teléfono
+                </h5>
+                <p class="text-muted mb-4">
+                    <a href="tel:+50378901234" class="text-decoration-none text-dark fw-medium">(+503) 7890-1234</a><br />
+                    
+                </p>
+
+                <h5 class="fw-semibold text-dark mb-2">
+                    <i class="bi bi-envelope text-warning me-2"></i>Correo electrónico
+                </h5>
+                <p class="text-muted">
+                    <strong>Reservas:</strong> <a href="mailto:reservas@goldstreet.com" class="text-decoration-none text-dark">reservas@goldstreet.com</a><br />
+                    
+                </p>
+            </div>
+        </div>
+
+        <!-- Mapa -->
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="ratio ratio-16x9 shadow-sm border">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3876.2145344032213!2d-89.08294882416632!3d13.730931086664875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6347e163094021%3A0x43372108a76ee0e9!2sRestaurante%20Gold%20Street!5e0!3m2!1ses-419!2ssv!4v1730427800000!5m2!1ses-419!2ssv"
+                            style="border:0;" allowfullscreen loading="lazy">
+                    </iframe>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </main>
