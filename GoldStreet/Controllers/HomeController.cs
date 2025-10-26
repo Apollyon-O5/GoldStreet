@@ -15,7 +15,7 @@ namespace GoldStreet.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult About()//si
         {
             ViewBag.Message = "Your application description page.";
 
