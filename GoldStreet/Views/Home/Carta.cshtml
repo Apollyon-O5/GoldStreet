@@ -1,0 +1,61 @@
+﻿
+@model IEnumerable<GoldStreet.Menu>
+
+@{
+    ViewBag.Title = "Nuestra Carta";
+}
+
+<h2 class="text-center mt-4 mb-4"> Nuestra Carta</h2>
+<p class="text-center subtitle-section">Sabores únicos preparados con ingredientes frescos y pasión.</p>
+
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Nombre</h5>
+                        <p class="card-text text-muted">@item.Descripcion</p>
+                        <p><strong>Precio:</strong> $@item.Precio</p>
+                        <p><strong>Categoría:</strong> @item.Categorias.NombreCategoria</p>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<style>
+   
+    
+    .card {
+        border-radius: 15px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        border: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+        .card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+    .card-title {
+        font-weight: bold;
+        color: #f4c542; /* rojo elegante */
+    }
+
+    .card-text {
+        min-height: 60px; /* mantiene uniformidad entre tarjetas */
+    }
+
+    .container {
+        padding-bottom: 40px;
+    }
+
+    body {
+        background-color: #fafafa;
+    }
+</style>
