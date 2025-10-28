@@ -1,4 +1,8 @@
-﻿.navbar {
+﻿body {
+    background-color: #A5A5A5;
+}
+
+.navbar {
     background-color: rgba(0, 0, 0, 0.2);
     position: fixed;
     top: 0;
@@ -92,4 +96,3 @@ footer {
         transform: translateY(0);
     }
 }
-
