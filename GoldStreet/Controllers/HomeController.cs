@@ -27,6 +27,20 @@ namespace GoldStreet.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+     
         }
+
+
+        //parte sujeta a optimizaciones
+        private GoldStreetEntities db = new GoldStreetEntities(); // tu contexto de base de datos
+
+        // Acción para mostrar la carta
+        public ActionResult Carta()
+        {
+            var menu = db.Menu.Include("Categorias").ToList(); // Obtiene todos los platillos de la tabla Menu, se puso .Include("Categorias")
+            return View(menu);           // Envía la lista a la vista
+        }
+
+
     }
 }

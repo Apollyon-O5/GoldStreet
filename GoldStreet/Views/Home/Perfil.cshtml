@@ -1,0 +1,41 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Perfil";
+}
+
+<div class="container py-5">
+    <h2 class="mb-4">Mi Perfil</h2>
+
+    <div class="card shadow-sm" style="max-width: 600px; margin: auto;">
+        <div class="card-body">
+            <h4 class="card-title">@Session["UsuarioNombre"]</h4>
+            <p class="card-text"><strong>Tipo de usuario:</strong> @Session["UsuarioTipo"]</p>
+
+            @if (Session["UsuarioTipo"] == "Cliente")
+            {
+                <p class="card-text"><strong>Teléfono:</strong> @Model.Telefono</p>
+                <p class="card-text"><strong>Email:</strong> @Model.Email</p>
+            }
+            else if (Session["UsuarioTipo"] == "Empleado")
+            {
+                <p class="card-text"><strong>Teléfono:</strong> @Model.Telefono</p>
+                <p class="card-text"><strong>Email:</strong> @Model.Email</p>
+                <p class="card-text"><strong>Dirección:</strong> @Model.Direccion</p>
+                <p class="card-text"><strong>Fecha de contratación:</strong> @Model.FechaContratacion.ToShortDateString()</p>
+            }
+            else if (Session["UsuarioTipo"] == "Admin")
+            {
+                <p class="card-text text-warning"><strong>Administrador del sistema</strong></p>
+                <p class="card-text"><strong>Teléfono:</strong> @Model.Telefono</p>
+                <p class="card-text"><strong>Email:</strong> @Model.Email</p>
+                <p class="card-text"><strong>Dirección:</strong> @Model.Direccion</p>
+                <p class="card-text"><strong>Fecha de contratación:</strong> @Model.FechaContratacion.ToShortDateString()</p>
+            }
+
+            <a href="@Url.Action("Logout", "Home")" class="btn btn-danger mt-3">
+                Cerrar sesión
+            </a>
+        </div>
+    </div>
+</div>

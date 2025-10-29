@@ -47,6 +47,25 @@
                             <i class="bi bi-telephone footer-icon"></i> Contáctenos
                         </a>
                     </li>
+
+                    <!--Session-->
+                    <li class="nav-item">
+                        @if (Session["UsuarioNombre"] != null)
+                        {
+                            <a class="nav-link" href="@Url.Action("Perfil", "Home")">
+                                <i class="bi bi-person-circle"></i> @Session["UsuarioNombre"]
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="nav-link" href="@Url.Action("Login", "Home")">
+                                <i class="bi bi-box-arrow-in-right"></i> Iniciar sesión
+                            </a>
+                        }
+                    </li>
+
+                    <!--Fin session-->
+
                 </ul>
             </div>
         </div>

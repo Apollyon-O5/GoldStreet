@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Iniciar sesión";
+}
+
+<div class="container py-5 mt-5">
+    <h2 class="mb-4">Iniciar sesión</h2>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">@ViewBag.Error</div>
+    }
+
+    @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+    {
+        <div class="mb-3">
+            <label for="email" class="form-label">Correo electrónico</label>
+            <input type="email" class="form-control" name="email" required />
+        </div>
+
+        <div class="mb-3">
+            <label for="contrasenia" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" name="contrasenia" required />
+        </div>
+
+        <div class="mb-3">
+            <label for="tipoUsuario" class="form-label">Tipo de usuario</label>
+            <select class="form-select" name="tipoUsuario">
+                <option value="Cliente">Cliente</option>
+                <option value="Empleado">Empleado</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+    }
+</div>

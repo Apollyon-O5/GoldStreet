@@ -361,3 +361,17 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/GoldStreet/Web.config
+/GoldStreet/models/Transacciones.Metadata.cs
+/GoldStreet/models/Tabla.Metadata.cs
+/GoldStreet/models/Servicios.Metadata.cs
+/GoldStreet/models/Reservacion.Metadata.cs
+/GoldStreet/models/Mesas.Metadata.cs
+/GoldStreet/models/Menu.Metadata.cs
+/GoldStreet/models/HistorialEstadoMesa.Metadata.cs
+/GoldStreet/models/EstadoMesa.Metadata.cs
+/GoldStreet/models/Empleados.Metadata.cs
+/GoldStreet/models/Cuentas.Metadata.cs
+/GoldStreet/models/Comanda.Metadata.cs
+/GoldStreet/models/ClienteMesa.Metadata.cs
+/GoldStreet/models/Categoria.Metadata.cs
